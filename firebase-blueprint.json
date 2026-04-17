@@ -1,0 +1,66 @@
+{
+  "entities": {
+    "Appointment": {
+      "title": "Appointment",
+      "description": "Healthcare appointments booked by patients",
+      "type": "object",
+      "properties": {
+        "patientName": { "type": "string", "description": "Full name of the patient" },
+        "email": { "type": "string", "format": "email", "description": "Patient email" },
+        "phone": { "type": "string", "description": "Patient phone number" },
+        "service": { "type": "string", "description": "Requested service name" },
+        "doctorId": { "type": "string", "description": "ID of the assigned doctor" },
+        "date": { "type": "string", "format": "date", "description": "Appointment date (ISO 8601)" },
+        "time": { "type": "string", "description": "Appointment time slot" },
+        "status": { "type": "string", "enum": ["pending", "confirmed", "completed", "cancelled"], "description": "Current status of booking" },
+        "notes": { "type": "string", "description": "Additional notes" },
+        "createdAt": { "type": "string", "format": "date-time", "description": "Timestamp of booking" }
+      },
+      "required": ["patientName", "email", "phone", "service", "doctorId", "date", "time", "status"]
+    },
+    "Doctor": {
+      "title": "Doctor",
+      "description": "Medical staff profiles",
+      "type": "object",
+      "properties": {
+        "name": { "type": "string" },
+        "specialty": { "type": "string" },
+        "bio": { "type": "string" },
+        "experienceYears": { "type": "number" },
+        "education": { "type": "string" },
+        "languages": { "type": "array", "items": { "type": "string" } },
+        "photoUrl": { "type": "string", "format": "uri" },
+        "availability": { "type": "array", "description": "List of available time slots or days" }
+      },
+      "required": ["name", "specialty", "photoUrl"]
+    },
+    "Service": {
+      "title": "Service",
+      "description": "Healthcare services offered by the hospital",
+      "type": "object",
+      "properties": {
+        "name": { "type": "string" },
+        "description": { "type": "string" },
+        "price": { "type": "number" },
+        "duration": { "type": "string" }
+      },
+      "required": ["name", "description"]
+    },
+    "User": {
+      "title": "User",
+      "description": "App users (Admin/Staff)",
+      "type": "object",
+      "properties": {
+        "role": { "type": "string", "enum": ["admin", "staff"] },
+        "email": { "type": "string", "format": "email" }
+      },
+      "required": ["role", "email"]
+    }
+  },
+  "firestore": {
+    "appointments": { "schema": "Appointment", "description": "Collection of patient bookings" },
+    "doctors": { "schema": "Doctor", "description": "Collection of doctor profiles" },
+    "services": { "schema": "Service", "description": "Collection of hospital services" },
+    "users": { "schema": "User", "description": "Collection of authorized system users" }
+  }
+}

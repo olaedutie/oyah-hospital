@@ -1,0 +1,34 @@
+@import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
+@theme {
+  --font-sans: "Inter", "SF Pro Text", -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-display: "Inter", "SF Pro Text", -apple-system, BlinkMacSystemFont, sans-serif;
+  
+  --color-medical-blue: #2A7FFF;
+  --color-medical-teal: #E6F4F1;
+  --color-slate-50: #F8FBFF;
+  --color-slate-100: #E6F4F1;
+  --color-slate-200: #D9E8FF;
+  --color-slate-900: #0D1B2A;
+}
+
+body {
+  @apply font-sans bg-white text-[#1A1A1A] antialiased;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  @apply font-sans font-extrabold tracking-tight;
+}
+
+.clean-card {
+  @apply bg-white border border-medical-teal shadow-[0_20px_40px_rgba(0,0,0,0.03)] rounded-[24px];
+}
+
+.clean-input {
+  @apply w-full bg-[#FDFDFD] border border-slate-100 rounded-[10px] py-3.5 px-4 text-sm focus:ring-2 focus:ring-medical-blue/20 focus:border-medical-blue outline-none transition-all placeholder:text-[#7A8B9D];
+}
+
+.clean-badge {
+  @apply bg-medical-teal text-medical-blue px-4 py-1.5 rounded-full text-[12px] font-bold uppercase tracking-wider;
+}
